@@ -1,0 +1,36 @@
+//  Maybe write this as a markup(md) file for github
+
+Rules
+    -> American Checkers is played on a 8x8 board, world Checkers on a 10x10 board
+        other countries have different size boards.
+    -> Game is played between two opponents on opposite sides of the gamee board.
+        usually black v. white or black v. red
+    -> Players alternate turns, A player cannot move an opponents pieces.
+        a move consists of moving a piece diagonally to an adjacent unoccupied square.
+    -> Move Rules
+        -> If the adjacent square contains an opponents piece, and the square immediately beyond is is vacant,
+            the piece may be captured (and removed from the game) by jumping over it
+        -> Only the dark squares of the checkerboard are used. A piece can only move diagonally into an unoccupied square.
+            When capturing an opponent's piece is possible, capturing is mandatory in most offcial rules.
+        -> If the player does not capture, the other player can remove the opponent's piece as a penalty (or muffin)
+            where there are two or more such positions the player forfeits pieces that cannot be moved
+    -> Win Condition        
+        -> The player with no remaining pieces or who cannot move due to being blocked, has lost the game
+
+    
+Pieces
+    -> Man:
+        -> An uncrowned piece (man) moves one step diagonally forwards and captures an adjacent opponents piece by jumping over it and landing on the next square.
+        -> Multiple enemy pieces can be captured in a single turn provided this is done by successive jumps made by a single piece,
+            the jumps do not need to be in the same line and may "zigzag"
+        -> In american checkers, men can jump only forwards, in international checkers men can jump both forwards and backwards.
+    -> King:
+        -> When a man reaches the fathest row forward, known as the kings row or crown head, it becomes a king. Similiar to queening a pawn.
+            This is marked by placing an additional piece on top of, or crowning, the first man. The king has additional powers,
+            including the ability to move backwards and , in variations where men cannot already do so, capture backwards.
+        -> A king, like a man, can make successive jumps in a single turn, provided that each jump captures an enemy piece.
+        -> In international checkers(draughts), kings also called flying kings move any distance along unblocked diagonals.
+            They may capture an opposing man any distance away by jumping to any of the unoccupied squares immediately beyond it. 
+            Because jumped pieces remain on the board until the turn is complete, it is possible to reach a position in a multi-jump move where the flying king is blocked from capturing further by a piece already jumped.
+
+    -> Flying kings are not used in American checkers; a king's only advantage over a man is the additional ability to move and capture backwards.
