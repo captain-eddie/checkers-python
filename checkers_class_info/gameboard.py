@@ -8,8 +8,8 @@ class Board:
     def __init__(this, rows, cols):
         this.rows = rows
         this.cols = cols
-
-        this.game_board = [[r for r in range(rows)] for c in range(cols)]
+        # intializes game board as 2d array
+        this.game_board = [[c for c in range(cols)] for r in range(rows)]
 
     def __str__(this):
         ret = ""
