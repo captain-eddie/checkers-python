@@ -42,6 +42,7 @@ TODO:
 
 DOING:
     ->  Player moves
+    ->  Player positions
 
 DONE:
     ->  Making game board class
