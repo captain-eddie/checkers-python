@@ -34,3 +34,17 @@ Pieces
             Because jumped pieces remain on the board until the turn is complete, it is possible to reach a position in a multi-jump move where the flying king is blocked from capturing further by a piece already jumped.
 
     -> Flying kings are not used in American checkers; a king's only advantage over a man is the additional ability to move and capture backwards.
+
+
+TODO:
+    ->  ...
+
+DOING:
+    ->  Making game board class
+    ->  ...
+
+DONE:
+    ->
+
+MIGHTDO:
+    ->
