@@ -12,9 +12,7 @@ def main():
     logging.basicConfig(level = logging.DEBUG)
     
     #   sets up game board
-    rows, cols = int(input("Number of rows: ")), int(input("Number of cols: "))
-    my_board = gameboard.Board(rows, cols)
-    #   logging.debug(f"\n{rows}x{cols} checkers game-board is ->\n")
+    my_board = gameboard.Board()
     print(my_board)
 
 

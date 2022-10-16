@@ -5,11 +5,15 @@ Checkers game board class
 '''
 
 class Board:
-    def __init__(this, rows, cols):
-        this.rows = rows
-        this.cols = cols
-        # intializes game board as 2d array
-        this.game_board = [[c for c in range(cols)] for r in range(rows)]
+    '''
+    In standard american checkers the game is played on an 8x8 board
+    Here is the board
+    '''
+    def __init__(this):
+
+        #   intializes game board as 2d array, -1 is defualt val for each element
+        #   1 is value for black, 0 is value for red
+        this.game_board = [[-1] * 8 for i in range(8)]
 
     def __str__(this):
         ret = ""
@@ -18,4 +22,3 @@ class Board:
             ret += str(row) + "\n"
 
         return ret
-        #return str(this.game_board)
