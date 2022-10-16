@@ -39,10 +39,12 @@ Pieces
 TODO:
     ->  Attack conditions
     ->  Win conditions
-
-DOING:
     ->  Player moves
     ->  Player positions
+
+DOING:
+    ->  Re working codebase
+            -   making checkers gui instead of terminal program(using pygame)
 
 DONE:
     ->  Making game board class
