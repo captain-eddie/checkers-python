@@ -1,34 +1,35 @@
 
 '''
-Checkers game board class
+Checkers game board module
 10-15-2022
 '''
 
-class Board:
-    '''
-    In standard american checkers the game is played on an 8x8 board
-    Here is the board
-    '''
-    #   constructor
-    def __init__(this):
+import pygame
 
-        #   intializes game board as 2d array, -1 is defualt val for each element
-        #   1 is value for black, 0 is value for red
-        this.game_board = [[None] * 8 for i in range(8)]
-        for row in this.game_board:
-            for col in row:
-                if this.game_board.index(row) % 2 == 0 and this.game_board.index(col) % 2 == 0:
-                    this.game_board[row][col] = "- "
-                else:
-                    this.game_board[row][col] = "O "
+screen = pygame.display.set_mode(size = (500, 500))
+dark_brown = (84, 75, 52)
+creamy_beige = (219, 199, 151)
 
-    #   to string
-    def __str__(this):
-        ret = ""
+#   makes game board with specified rows x cols dimensions
+def make_board(rows, cols):
+    board_array = [[] *cols for r in range(0, rows)]
 
-        for row in this.game_board:
-            ret += str(row) + "\n"
+    #   loop over the array, if the index is odd, draw and color the block dark brown
+    #   else, draw and color the block creamy beige
+    for r in board_array:
+        for c in r:
 
-        return ret
+            #   color creamy beige
+            #   if board_array.index(board_array[r][c]) % 2 == 0:
+            pygame.draw.rect(screen, creamy_beige, pygame.Rect(30, 30, 60, 60))
+            pygame.display.flip()
 
-    #   player movement
+            #   color dark brown
+            #   else:
+            pygame.draw.rect(screen, dark_brown, pygame.Rect(30, 30, 60, 60))
+            pygame.display.flip()
+
+#   sets starting position of pieces on board
+def set_board(board):
+    #   board = set_board(board) or is there a faster more memory efficent way
+    pass
