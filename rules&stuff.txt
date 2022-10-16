@@ -37,14 +37,16 @@ Pieces
 
 
 TODO:
-    ->  ...
+    ->  Attack conditions
+    ->  Win conditions
 
 DOING:
-    ->  Making game board class
-    ->  ...
+    ->  Player moves
 
 DONE:
-    ->
+    ->  Making game board class
+    ->  Game board constructor
+    ->  8x8 game board
 
 MIGHTDO:
     ->
