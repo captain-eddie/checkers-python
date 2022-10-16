@@ -10,10 +10,6 @@ class Board:
         this.cols = cols
 
         this.game_board = [[r for r in range(rows)] for c in range(cols)]
-        
-        for row in this.game_board:
-            for col in this.game_board:
-                this.game_board[row][col] = "_"
 
     def __str__(this):
         ret = ""
