@@ -31,6 +31,7 @@ def main():
 
     #   draw the grid
     board.draw_board(surface)
+    logging.debug(board.boardlist)
 
     #   main game loop
     while True:
