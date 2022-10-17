@@ -20,15 +20,15 @@ class Board():
         #   1 represents red pieces
         #   0 represents black pieces
         #   -1 represents empty pieces
-        self.boardlist = [[] * cols] * rows
-        for row in self.boardlist:
-            for col in row:
-                if self.boardlist.index(row) <= 2:
-                    self.boardlist[row][col].append(1)
-                elif self.boardlist.index(row) in range(len(self.boardlist) - 2, len(self.boardlist)):
-                    self.boardlist[row][col] = 0
+        self.boardlist = [[0] * cols for r in range(0, rows)]
+        for indexr, row in enumerate(self.boardlist):
+            for indexc, col in enumerate(row):
+                if indexc < 2:
+                    self.boardlist[indexr][indexc] = 1
+                elif indexc in range(len(self.boardlist[indexr]) - 2, len(self.boardlist)):
+                    self.boardlist[indexr][indexc] = 0
                 else:
-                    self.boardlist[row][col] = -1
+                    self.boardlist[indexr][indexc] = -1
                 
 
     #   draws game board with specified rows x cols dimensions
