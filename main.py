@@ -14,20 +14,23 @@ import sys
 def main():
     #   set defualt logging level to DEBUG
     logging.basicConfig(level = logging.DEBUG)
+
+    #   board object that holds game info
+    board = gb.Board(8, 8)
     
     #   initialize the game window
     pygame.init()
 
     #   game clock and game screen
     clock = pygame.time.Clock()
-    screen = pygame.display.set_mode((gb.SCREEN_WIDTH, gb.SCREEN_HEIGHT))
+    screen = pygame.display.set_mode((board.SCREEN_WIDTH, board.SCREEN_HEIGHT))
 
     #   game surface
     surface = pygame.Surface(screen.get_size())
     surface = surface.convert()
 
     #   draw the grid
-    gb.draw_board(8, 8, surface)
+    board.draw_board(surface)
 
     #   main game loop
     while True:
