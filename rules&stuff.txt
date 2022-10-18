@@ -39,17 +39,20 @@ Pieces
 TODO:
     ->  Attack conditions
     ->  Win conditions
-    ->  Player moves
-    ->  Player positions
 
 DOING:
-    ->  Re working codebase
-            -   making checkers gui instead of terminal program(using pygame)
+    -> Implementing player moves
+    -> Implementing player positions
 
 DONE:
-    ->  Making game board class
-    ->  Game board constructor
+    ->  Re working codebase
+            -   making checkers gui instead of terminal program(using pygame)
+    ->  Making game board class -- re done
+    ->  Game board constructor  -- re done
     ->  8x8 game board
+    ->  nxn game board
+    ->  pieces displayed properly on game board
+    ->  list representaion of game board
 
 MIGHTDO:
     ->  Make AI
