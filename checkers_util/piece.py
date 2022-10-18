@@ -27,15 +27,11 @@ class Piece():
 
         self.x, self.y = 0, 0
         self.calc_pos()
-        #   self.x = 25
-        #   self.y = 25
 
     #   position of piece
     def calc_pos(self):
         self.x = 50 * self.cpos + 50 // 2
         self.y = 50 * self.rpos + 50 // 2
-        #   self.x = 25
-        #   self.y = 25
 
     #   make a man a king
     def make_king(self):
