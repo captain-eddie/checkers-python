@@ -6,6 +6,9 @@ Checkers game board module
 
 import pygame as pg
 from checkers_util import piece
+import logging as lo
+
+lo.basicConfig(level = lo.DEBUG)
 
 class Board():
     #   constructor
@@ -24,10 +27,12 @@ class Board():
         self.boardlist = [[0] * cols for r in range(0, rows)]
         for indexr, row in enumerate(self.boardlist):
             for indexc, col in enumerate(row):
-                if indexc < 2:
-                    self.boardlist[indexr][indexc] = 1
-                elif indexc in range(len(self.boardlist[indexr]) - 2, len(self.boardlist)):
-                    self.boardlist[indexr][indexc] = 0
+                if indexc < 3:
+                    man = piece.Piece(indexr, indexc, (255, 0, 0))
+                    self.boardlist[indexr][indexc] = man
+                elif indexc in range(len(self.boardlist[indexr]) - 3, len(self.boardlist)):
+                    man = piece.Piece(indexr, indexc, (0, 0, 0))
+                    self.boardlist[indexr][indexc] = man
                 else:
                     self.boardlist[indexr][indexc] = -1
                 
@@ -44,8 +49,20 @@ class Board():
                         rd = pg.Rect((x * self.GRIDSIZE, y * self.GRIDSIZE), (self.GRIDSIZE, self.GRIDSIZE))
                         pg.draw.rect(surface, self.DARK_BROWN, rd)
 
-        #   puts pieces in for loop
+        # draws pieces
         for indexr, row in enumerate(self.boardlist):
+            for indexc, col in enumerate(row):
+                if self.boardlist[indexr][indexc] != -1:
+                    #   lo.debug(f"\n(indexr, indexc) -> ({indexr}, {indexc}) = {self.boardlist[indexr][indexc]}")
+                    #   lo.debug(f"Type of element -> {type(self.boardlist[indexr][indexc])}")
+                    #   man = piece.Piece(indexr, indexc, self.boardlist[indexr][indexc])
+                    #   man.draw(surface)
+                    #   self.boardlist[indexr][indexc].draw(surface)
+                    man = self.boardlist[indexr][indexc]
+                    man.draw(surface)
+
+        #   puts pieces in for loop
+'''        for indexr, row in enumerate(self.boardlist):
             for indexc, col in enumerate(row):
                 black_man = piece.Piece(indexr, indexc, (0, 0, 0))
                 red_man = piece.Piece(indexr, indexc, (255, 0, 0)) 
@@ -58,9 +75,4 @@ class Board():
                         self.boardlist[indexr].append(-1)
                 else:
                     self.boardlist[indexr].append(-1)
-
-        # draws pieces
-        for indexr, row in enumerate(self.boardlist):
-            for indexc, col in enumerate(row):
-                if self.boardlist[indexr][indexc] != -1:
-                    self.boardlist[indexr][indexc].draw(surface)
+'''

@@ -27,6 +27,8 @@ class Piece():
 
         self.x, self.y = 0, 0
         self.calc_pos()
+        #   self.x = 25
+        #   self.y = 25
 
     #   position of piece
     def calc_pos(self):
@@ -37,14 +39,14 @@ class Piece():
 
     #   make a man a king
     def make_king(self):
-        self.king = True;
+        self.king = True
 
     #   draws piece, 18 is radius in pixels of the circle
     def draw(self, screen):
         #   draws outline
-        pg.draw.circle(screen, (255, 255, 255), (self.x, self.y), 20)
+        pg.draw.circle(screen, (255, 255, 255), (self.x, self.y), 18)
         #   draws piece as a circle
-        pg.draw.circle(screen, self.color, (self.x, self.y), 18)
+        pg.draw.circle(screen, self.color, (self.x, self.y), 16)
 
     #   object representation
     def __repr__(self):
