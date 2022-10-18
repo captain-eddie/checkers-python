@@ -55,7 +55,33 @@ DONE:
     ->  list representaion of game board
 
 MIGHTDO:
-    ->  Make AI
+    ->  Make Game AI
+
+CODE PLAN:
+    ->  if piece is clicked, it should move with the mouse until it is dropped on a square.
+        ->  if the position is a valid move, then drop it
+                and highlight the original square blue and the final square green
+            ->  if not return the piece back to the original spot and highlight the invalid square red.
+    ->  function plan:  CONSIDER IMPLEMENTING the square highlighting later.
+                                        CLICK AND DRAG
+        ->  check if piece is clicked using pygame.MOUSEBUTTONDOWN/UP
+            -   check to see if mouse postion is within the area of the outer rim of the piece
+            -   at the position that is clicked should be where the piece is attached to the mouse
+            ->  if it is, the piece postion should move with the mouse 
+        ->  once positon is attached to mouse, move the piece with the mouse.
+        ->  if  atleast 40% (2/5ths) of the area of the outer rim of the piece is in the square
+                IF VALID MOVE
+            -   drop the piece on that square. highlight original square blue and final square green
+                ELSE
+            -   return the piece back to orignal spot and highlight destination square red and origin yellow
+
+                                        CLICK AND SELECT(TELEPORT)
+        ->  check if piece is clicked
+        ->  if clicked remember piece
+        ->  if next click is valid change piece position to clicked square.
+            -   highlight origin blue and final green
+        ->  else
+            -   do not change position and highlight final square red.
 
 
 
