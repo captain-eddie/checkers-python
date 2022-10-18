@@ -5,6 +5,7 @@ Checkers game board module
 '''
 
 import pygame as pg
+from checkers_util import piece
 
 class Board():
     #   constructor
@@ -42,3 +43,24 @@ class Board():
                     else:
                         rd = pg.Rect((x * self.GRIDSIZE, y * self.GRIDSIZE), (self.GRIDSIZE, self.GRIDSIZE))
                         pg.draw.rect(surface, self.DARK_BROWN, rd)
+
+        #   puts pieces in for loop
+        for indexr, row in enumerate(self.boardlist):
+            for indexc, col in enumerate(row):
+                black_man = piece.Piece(indexr, indexc, (0, 0, 0))
+                red_man = piece.Piece(indexr, indexc, (255, 0, 0)) 
+                if indexc % 2 ==  ((indexr + 1) % 2):
+                    if indexr < 3:
+                        self.boardlist[indexr].append(red_man)
+                    elif row in range(len(self.boardlist) - 3, len(self.boardlist) - 1):
+                        self.boardlist[indexr].append(black_man)
+                    else:
+                        self.boardlist[indexr].append(-1)
+                else:
+                    self.boardlist[indexr].append(-1)
+
+        # draws pieces
+        for indexr, row in enumerate(self.boardlist):
+            for indexc, col in enumerate(row):
+                if self.boardlist[indexr][indexc] != -1:
+                    self.boardlist[indexr][indexc].draw(surface)

@@ -52,7 +52,7 @@ DONE:
     ->  8x8 game board
 
 MIGHTDO:
-    ->
+    ->  Make AI
 
 
 
