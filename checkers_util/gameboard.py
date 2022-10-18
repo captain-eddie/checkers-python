@@ -27,14 +27,15 @@ class Board():
         self.boardlist = [[0] * cols for r in range(0, rows)]
         for indexr, row in enumerate(self.boardlist):
             for indexc, col in enumerate(row):
-                if indexc < 3:
-                    man = piece.Piece(indexr, indexc, (255, 0, 0))
-                    self.boardlist[indexr][indexc] = man
-                elif indexc in range(len(self.boardlist[indexr]) - 3, len(self.boardlist)):
-                    man = piece.Piece(indexr, indexc, (0, 0, 0))
-                    self.boardlist[indexr][indexc] = man
+                gridpos = (indexc + indexr) % 2
+                if indexc < 3 and gridpos != 0:
+                    man = piece.Piece(indexc, indexr, (255, 0, 0))
+                    self.boardlist[indexc][indexr] = man
+                elif indexc in range(len(self.boardlist[indexc]) - 3, len(self.boardlist)) and gridpos != 0:
+                    man = piece.Piece(indexc, indexr, (0, 0, 0))
+                    self.boardlist[indexc][indexr] = man
                 else:
-                    self.boardlist[indexr][indexc] = -1
+                    self.boardlist[indexc][indexr] = -1
                 
 
     #   draws game board with specified rows x cols dimensions
