@@ -61,3 +61,16 @@ class Board():
                     #   self.boardlist[indexr][indexc].draw(surface)
                     man = self.boardlist[indexr][indexc]
                     man.draw(surface)
+
+    
+    def move(self, piece, row, col):
+        self.boardlist[piece.rpos][piece.cpos], self.boardlist[row][col] = self.boardlist[row][col], self.boardlist[piece.rpos][piece.cpos]
+        piece.move_piece(row, col)
+
+        #   check to see if you moved to back rank for kinging
+        if row == len(self.boardlist) - 1 or row == 0:
+            piece.make_king()
+
+    
+    def get_piece(self, row, col):
+        return self.boardlist[row][col]

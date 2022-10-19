@@ -4,11 +4,18 @@ Checkers non gui
 Edward Abel Guobadia
 10-15-2022
 '''
+from re import M
 from checkers_util import gameboard as gb
 import logging
 import pygame
 import sys
 
+
+def get_mouse_pos(pos, board):
+    x, y = pos
+    row = y // board.GRIDSIZE
+    col = x // board.GRIDSIZE
+    return row, col
 
 #   main function
 def main():
@@ -30,12 +37,15 @@ def main():
     surface = surface.convert()
 
     #   draw the grid
-    board.draw_board(surface)
     logging.debug(f"\nGame Board\n{board.boardlist}")
+
+    #   tpiece = board.get_piece(6, 1)
+    #   board.move(tpiece, 4, 3)
 
     #   main game loop
     while True:
         clock.tick(25)
+        board.draw_board(surface)
 
         #   update screen when ever there is an event
         screen.blit(surface, (0, 0))
@@ -49,6 +59,13 @@ def main():
                 pygame.quit()
                 logging.debug("Quit game")
                 sys.exit()
+
+            #   moving piece with mouse
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                row, col = get_mouse_pos(pos, board)
+                piece = board.get_piece(row, col)
+                board.move(piece, 4, 3)
 
 
 #   call main
