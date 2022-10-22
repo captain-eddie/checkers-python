@@ -35,7 +35,10 @@ class Board():
                     man = piece.Piece(indexc, indexr, (0, 0, 0))
                     self.boardlist[indexc][indexr] = man
                 else:
-                    self.boardlist[indexc][indexr] = -1
+                    pass
+                    #   man = piece.Piece(indexc, indexr, (1, 1, 1))
+                    #   self.boardlist[indexc][indexr] = -1
+                    #   self.boardlist[indexc][indexr] = man
                 
 
     #   draws game board with specified rows x cols dimensions
@@ -64,6 +67,10 @@ class Board():
 
     
     def move(self, piece, row, col):
+        #   if self.boardlist[row][col] == -1:
+            #   return
+            #   self.move_empty()
+
         self.boardlist[piece.rpos][piece.cpos], self.boardlist[row][col] = self.boardlist[row][col], self.boardlist[piece.rpos][piece.cpos]
         piece.move_piece(row, col)
 
@@ -71,6 +78,17 @@ class Board():
         if row == len(self.boardlist) - 1 or row == 0:
             piece.make_king()
 
-    
     def get_piece(self, row, col):
         return self.boardlist[row][col]
+
+'''    
+def move_empty(self, etype):
+        #   droping piece
+        if etype == pg.MOUSEBUTTONDOWN:
+            pos = pg.mouse.get_pos()
+            row, col = piece.get_mouse_pos(pos, self.boardlist)
+            piece = self.boardlist.get_piece(row, col)
+            self.boardlist.move(piece, row, col)
+
+'''
+    

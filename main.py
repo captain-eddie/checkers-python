@@ -60,12 +60,23 @@ def main():
                 logging.debug("Quit game")
                 sys.exit()
 
-            #   moving piece with mouse
+            #   picking piece up with mouse
             if event.type == pygame.MOUSEBUTTONDOWN:
                 pos = pygame.mouse.get_pos()
                 row, col = get_mouse_pos(pos, board)
                 piece = board.get_piece(row, col)
-                board.move(piece, 4, 3)
+
+                #   droping piece
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    next_pos = pygame.mouse.get_pos()
+                    next_row, next_col = get_mouse_pos(next_pos, board)
+                    next_piece = board.get_piece(next_row, next_col)
+                    #   just move piece to next pos and move piece at next pos to original pos
+                    if board.boardlist[next_row][next_col].color == (1, 1, 1):
+                        board.boardlist[row][col] = piece
+                        break
+                    #   piece = board.get_piece(row, col)
+                    board.move(piece, next_row, next_col)
 
 
 #   call main

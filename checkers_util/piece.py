@@ -25,6 +25,9 @@ class Piece():
         #   red pieces
         if self.color == (255, 0, 0):
             self.direction = 1
+        
+        elif self.color == (1, 1, 1):
+            self.direction = 0
 
         #   black pieces
         else:
@@ -44,6 +47,9 @@ class Piece():
 
     #   draws piece, 18 is radius in pixels of the circle
     def draw(self, screen):
+        #   this is TESTING
+        if self.color == (1, 1, 1):
+            return
         #   draws outline
         pg.draw.circle(screen, (255, 255, 255), (self.x, self.y), 18)
         #   draws piece as a circle
@@ -60,6 +66,9 @@ class Piece():
         self.rpos = row
         self.cpos = col
         self.calc_pos()
+    
+    def get_pos(self):
+        return (self.rpos, self.cpos)
 
     #   is the piece clicked by mouse
 '''    def is_clicked(self):
@@ -69,3 +78,4 @@ class Piece():
                 mouse_pos = pygame.mouse.get_pos()
         return pg.mouse.get_pressed()[0] and self.rect.collidepoint(pg.mouse.get_pos())
 '''
+
