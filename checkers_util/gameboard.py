@@ -6,9 +6,9 @@ Checkers game board module
 
 import pygame as pg
 from checkers_util import piece
-import logging as lo
+import logging as lg
 
-lo.basicConfig(level = lo.DEBUG)
+lg.basicConfig(level = lg.DEBUG)
 
 class Board():
     #   constructor
@@ -21,21 +21,47 @@ class Board():
         self.DARK_BROWN, self.CREAMY_BEIGE = (84, 75, 52), (219, 199, 151)
 
         #   list representaion of game window
-        #   1 represents red pieces
-        #   0 represents black pieces
-        #   -1 represents empty pieces
-        self.boardlist = [[0] * cols for r in range(0, rows)]
-        for indexr, row in enumerate(self.boardlist):
-            for indexc, col in enumerate(row):
-                gridpos = (indexc + indexr) % 2
-                if indexc < 3 and gridpos != 0:
-                    man = piece.Piece(indexc, indexr, (255, 0, 0))
-                    self.boardlist[indexc][indexr] = man
-                elif indexc in range(len(self.boardlist[indexc]) - 3, len(self.boardlist)) and gridpos != 0:
-                    man = piece.Piece(indexc, indexr, (0, 0, 0))
-                    self.boardlist[indexc][indexr] = man
+
+        #   empty 2D list
+        col_list = [] * cols
+        self.boardlist = [col_list for r in range(0, rows)]
+
+        #   dead code
+        #   self.boardlist = [[] * cols for r in range(0, rows)]
+
+        #   puts pieces in appropiate position in boardlist
+        for row in self.boardlist:
+            row_index = self.boardlist.index(row)
+            for col in row:
+                col_index = row.index(col)
+
+                #   grid position
+                grid_pos = (row_index + col_index) % 2
+
+                #   puts red man in proper locations
+                if col_index < 3 and grid_pos != 0:
+                    red_man = piece.Piece(col_index, row_index, (255, 0, 0))
+                    self.boardlist[col_index][row_index] = red_man
+                
+                #   puts black man in proper locations
+                elif col_index in range(len(self.boardlist[col_index]) - 3, len(self.boardlist)) and grid_pos != 0:
+                    black_man = piece.Piece(col_index, row_index, (0, 0, 0))
+                    self.boardlist[col_index][row_index]
+
                 else:
                     pass
+
+        #   for indexr, row in enumerate(self.boardlist):
+            #   for indexc, col in enumerate(row):
+                #   gridpos = (indexc + indexr) % 2
+                #   if indexc < 3 and gridpos != 0:
+                    #   man = piece.Piece(indexc, indexr, (255, 0, 0))
+                    #   self.boardlist[indexc][indexr] = man
+                #   elif indexc in range(len(self.boardlist[indexc]) - 3, len(self.boardlist)) and gridpos != 0:
+                    #   man = piece.Piece(indexc, indexr, (0, 0, 0))
+                    #   self.boardlist[indexc][indexr] = man
+                #   else:
+                    #   pass
                     #   man = piece.Piece(indexc, indexr, (1, 1, 1))
                     #   self.boardlist[indexc][indexr] = -1
                     #   self.boardlist[indexc][indexr] = man
