@@ -23,7 +23,7 @@ class Board():
         #   list representaion of game window
 
         #   empty 2D list
-        col_list = [] * cols
+        #   col_list = [] * cols
         self.boardlist = [col_list for r in range(0, rows)]
 
         #   dead code
@@ -44,12 +44,14 @@ class Board():
                     self.boardlist[col_index][row_index] = red_man
                 
                 #   puts black man in proper locations
-                elif col_index in range(len(self.boardlist[col_index]) - 3, len(self.boardlist)) and grid_pos != 0:
-                    black_man = piece.Piece(col_index, row_index, (0, 0, 0))
-                    self.boardlist[col_index][row_index]
+                elif col_index in range(len(self.boardlist[col_index]) - 3, len(self.boardlist)):
+                    if grid_pos != 0:
+                        black_man = piece.Piece(col_index, row_index, (0, 0, 0))
+                        self.boardlist[col_index][row_index] = black_man
 
                 else:
-                    pass
+                    empty = piece.Piece(col_index, row_index, (255, 255, 255))
+                    self.boardlist[col_index][row_index] = empty
 
         #   for indexr, row in enumerate(self.boardlist):
             #   for indexc, col in enumerate(row):
@@ -69,6 +71,7 @@ class Board():
 
     #   draws game board with specified rows x cols dimensions
     def draw_board(self, surface):
+
         #   should draw creamy biege on even positions and dark brown on odd positions
         for y in range(0, int(self.GRID_HEIGHT)):
             for x in range(0, int(self.GRID_WIDTH)):
@@ -82,14 +85,14 @@ class Board():
         # draws pieces
         for indexr, row in enumerate(self.boardlist):
             for indexc, col in enumerate(row):
-                if self.boardlist[indexr][indexc] != -1:
+                #   if self.boardlist[indexr][indexc] != -1:
                     #   lo.debug(f"\n(indexr, indexc) -> ({indexr}, {indexc}) = {self.boardlist[indexr][indexc]}")
                     #   lo.debug(f"Type of element -> {type(self.boardlist[indexr][indexc])}")
                     #   man = piece.Piece(indexr, indexc, self.boardlist[indexr][indexc])
                     #   man.draw(surface)
                     #   self.boardlist[indexr][indexc].draw(surface)
-                    man = self.boardlist[indexr][indexc]
-                    man.draw(surface)
+                man = self.boardlist[indexr][indexc]
+                man.draw(surface)
 
     
     def move(self, piece, row, col):

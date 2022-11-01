@@ -48,7 +48,7 @@ class Piece():
     #   draws piece, 18 is radius in pixels of the circle
     def draw(self, screen):
         #   this is TESTING
-        if self.color == (1, 1, 1):
+        if self.color == (255, 255, 255):
             return
         #   draws outline
         pg.draw.circle(screen, (255, 255, 255), (self.x, self.y), 18)

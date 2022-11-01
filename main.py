@@ -25,6 +25,7 @@ def main():
     #   board object that holds game info
     board = gb.Board(8, 8)
     logging.debug(f"\nboard ->\n {board.boardlist}")
+    print(board.boardlist)
     
     #   initialize the game window
     pygame.init()
