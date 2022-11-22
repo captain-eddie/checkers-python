@@ -1,81 +1,38 @@
 
-from distutils.debug import DEBUG
-import pygame as pg
-import logging
-from checkers_util import gameboard as gb
+import pygame
 
-'''
-Since pygame has postieve x and y axis to be left edge going down
-and top edge goinf right (of window). The pieces at the top have +1 direction downwards
-and the pieces at the bottom have -1 direction upwards.
-Red is on top
-Black is on bottom
-'''
+class Piece:
+    crown = pygame.transform.scale(pygame.image.load("images/crown.png"), (48, 98))
+    PADDING = 15
+    OUTLINE = 2
 
-logging.basicConfig(level = DEBUG)
-crown = pg.transform.scale(pg.image.load("images/crown.png"), (48, 98))
-
-class Piece():
-    def __init__(self, rpos, cpos, color):
-        self.rpos = rpos
-        self.cpos = cpos
+    def __init__(self, row, col, color):
+        self.row = row
+        self.col = col
         self.color = color
         self.king = False
-
-        #   red pieces
-        if self.color == (255, 0, 0):
-            self.direction = 1
-        
-        elif self.color == (1, 1, 1):
-            self.direction = 0
-
-        #   black pieces
-        else:
-            self.direction = -1
-
-        self.x, self.y = 0, 0
+        self.x = 0
+        self.y = 0
         self.calc_pos()
 
-    #   position of piece
     def calc_pos(self):
-        self.x = 50 * self.cpos + 50 // 2
-        self.y = 50 * self.rpos + 50 // 2
+        self.x = 50 * self.col + 50 // 2
+        self.y = 50 * self.row + 50 // 2
 
-    #   make a man a king
     def make_king(self):
         self.king = True
-
-    #   draws piece, 18 is radius in pixels of the circle
-    def draw(self, screen):
-        #   this is TESTING
-        if self.color == (255, 255, 255):
-            return
-        #   draws outline
-        pg.draw.circle(screen, (255, 255, 255), (self.x, self.y), 18)
-        #   draws piece as a circle
-        pg.draw.circle(screen, self.color, (self.x, self.y), 17)
-
+    
+    def draw(self, win):
+        radius = 50 // 2 - self.PADDING
+        pygame.draw.circle(win, (255, 255, 255), (self.x, self.y), radius + self.OUTLINE)
+        pygame.draw.circle(win, self.color, (self.x, self.y), radius)
         if self.king:
-            screen.blit(crown, (self.x - 24, self.y - 54))
+            win.blit(self.crown, (self.x - self.crown.get_width()//2, self.y - self.crown.get_height()//2))
 
-    #   object representation
+    def move(self, row, col):
+        self.row = row
+        self.col = col
+        self.calc_pos()
+
     def __repr__(self):
         return str(self.color)
-
-    def move_piece(self, row, col):
-        self.rpos = row
-        self.cpos = col
-        self.calc_pos()
-    
-    def get_pos(self):
-        return (self.rpos, self.cpos)
-
-    #   is the piece clicked by mouse
-'''    def is_clicked(self):
-        if pg.MOUSEBUTTONDOWN == 1:
-            logging.debug("1")
-            if event.button == 1:
-                mouse_pos = pygame.mouse.get_pos()
-        return pg.mouse.get_pressed()[0] and self.rect.collidepoint(pg.mouse.get_pos())
-'''
-
