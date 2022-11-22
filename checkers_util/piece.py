@@ -22,12 +22,12 @@ class Piece:
     def make_king(self):
         self.king = True
     
-    def draw(self, win):
+    def draw(self, screen):
         radius = 50 // 2 - self.PADDING
-        pygame.draw.circle(win, (255, 255, 255), (self.x, self.y), radius + self.OUTLINE)
-        pygame.draw.circle(win, self.color, (self.x, self.y), radius)
+        pygame.draw.circle(screen, (255, 255, 255), (self.x, self.y), radius + self.OUTLINE)
+        pygame.draw.circle(screen, self.color, (self.x, self.y), radius)
         if self.king:
-            win.blit(self.crown, (self.x - self.crown.get_width()//2, self.y - self.crown.get_height()//2))
+            screen.blit(self.crown, (self.x - self.crown.get_width()//2, self.y - self.crown.get_height()//2))
 
     def move(self, row, col):
         self.row = row

@@ -4,7 +4,52 @@ Checkers non gui
 Edward Abel Guobadia
 10-15-2022
 '''
-from re import M
+
+import pygame
+from checkers_util import logic
+
+
+size = int(input("Game board size -> "))
+FPS = 60
+screen = pygame.display.set_mode((size * 50, size * 50))
+pygame.display.set_caption('Checkers')
+
+
+def get_row_col_from_mouse(pos):
+    x, y = pos
+    row = y // 50
+    col = x // 50
+    return row, col
+
+def main():
+    run = True
+    clock = pygame.time.Clock()
+    game = logic.Logic(screen, size)
+
+    while run:
+        clock.tick(FPS)
+
+        if game.winner() != None:
+            print(game.winner())
+            run = False
+
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                run = False
+            
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                pos = pygame.mouse.get_pos()
+                row, col = get_row_col_from_mouse(pos)
+                game.select(row, col)
+
+        game.update()
+    
+    pygame.quit()
+
+if __name__ == "__main__":
+    main()
+
+'''from re import M
 from checkers_util import gameboard as gb
 import logging
 import pygame
@@ -84,3 +129,4 @@ def main():
 #   call main
 if __name__ == "__main__":
     main()
+'''

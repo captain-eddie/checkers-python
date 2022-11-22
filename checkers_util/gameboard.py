@@ -5,7 +5,7 @@ Checkers game board module
 '''
 
 import pygame
-from piece import Piece
+from checkers_util import piece as p
 
 class Board:
     def __init__(self, size):
@@ -41,10 +41,10 @@ class Board:
             for col in range(self.COLS):
                 if col % 2 == ((row +  1) % 2):
                     if row < 3:
-                        self.board[row].append(Piece(row, col, (0, 0, 0)))
+                        self.board[row].append(p.Piece(row, col, (0, 0, 0)))
                         self.black_kings += 1
                     elif row > 4:
-                        self.board[row].append(Piece(row, col, (255, 0, 0)))
+                        self.board[row].append(p.Piece(row, col, (255, 0, 0)))
                         self.red_kings += 1
                     else:
                         self.board[row].append(0)
